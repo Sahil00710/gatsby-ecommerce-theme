@@ -25,6 +25,28 @@ const IndexPage = () => {
     navigate('/shop');
   };
 
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    <script
+      key="gtag-js"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EBX4GERHJQ"
+    />,
+    <script
+      key="gtag-config"
+      dangerouslySetInnerHTML={{
+        __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EBX4GERHJQ');
+        `,
+      }}
+    />,
+  ]);
+};
+
+
   return (
     <Layout disablePaddingBottom>
       {/* Hero Container */}
